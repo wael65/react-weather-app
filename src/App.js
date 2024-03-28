@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import axios from "axios";
 
 function App() {
+  const [data, setData] = useState([]);
+  const [city, setCity] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchData = async () => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=cairo&appid=0cb2908b500b15dcc33edef5b4168a02&units=metric`
+      )
+      .then((res) => {
+        setData(res.data.main);
+        setCity(res.data.name);
+      });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">Weather App</div>
+      <div className="body">
+        <button className="button" onClick={fetchData}>
+          Fetch Data
+        </button>
+        {data ? console.log(data) : ""}
+        <h3>City: {city}</h3>
+        <h3>Temp: {data.temp}</h3>
+      </div>
+    </>
   );
 }
 
