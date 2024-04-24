@@ -9,6 +9,10 @@ body {
   margin-top: 5%;
 }
 
+.main-div {
+  height: 100lvh;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -68,8 +72,15 @@ code {
 
 .search {
   text-align: center;
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 1em;
   font-weight: 600;
   font-size: medium;
+}
+
+.data-col {
+  color: "#EEEEEE";
+  padding-top: "1em" !important;
+  font: "3em";
+  font-weight: "bold";
 }
