@@ -1,36 +1,11 @@
 import { useState } from "react";
 
 import axios from "axios";
+import GetData from "./hooks/getData";
 
 function WeatherOld() {
-  const [data, setData] = useState(null);
-  const [saerchCity, setsSaerchCity] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  const fetchData = async () => {
-    setLoading(true);
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${saerchCity}&appid=0cb2908b500b15dcc33edef5b4168a02&units=metric`
-      )
-      .then((res) => {
-        setData(res.data);
-        // setCity(res.data.name);
-        console.log(res.data);
-      })
-      .catch(function (error) {
-        console.log("Show error notification!");
-        // return Promise.reject(error);
-        setData("");
-        setError(true);
-        return null;
-      });
-
-    setLoading(false);
-    setsSaerchCity("");
-  };
-
+  const [data, saerchCity, setsSaerchCity, loading, error, fetchData] =
+    GetData();
   return (
     <>
       <div className="main">Weather App</div>
@@ -57,6 +32,7 @@ function WeatherOld() {
             <p>
               <span className="data">Humidity :</span> {data.main.humidity} %
             </p>
+
             <p>
               <span className="data">Condtion :</span>{" "}
               {data.weather[0].description}

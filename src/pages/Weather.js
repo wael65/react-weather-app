@@ -1,25 +1,68 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-import rainy from "../assets/rainy.png";
+import four from "../assets/fourseasons.png";
+import GetData from "../hooks/getData";
 
 const Weather = () => {
+  const [data, saerchCity, setsSaerchCity, loading, error, fetchData] =
+    GetData();
   return (
-    <Container>
-      <Row className="py-5 ">
-        {/* <Image src={rainy} fluid />; */}
-        <Col sm="3" xs="3" md="3">
-          <div
-            className="card text-center bg-light text-dark"
-            style={{ width: "18rem" }}
-          >
-            <img src={rainy} clasName="card-img-top" alt="..."></img>
-            <div div className="card-body">
-              <span className="badge bg-secondary">New</span>
-              <h5 className="card-title">Card title </h5>
-              <p className="card-text">Some quick example text</p>
-            </div>
-          </div>
+    <Container fluid>
+      <Row className="justify-content-center py-5 ">
+        <Col className="text-center" sm={12} style={{ color: "#B3C8CF" }}>
+          <h1>Weather App</h1>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col sm={10}>
+          <Card style={{ background: "#EEEEEE" }}>
+            <Card.Img variant="top" src={four} style={{ height: "12rem" }} />
+            <Card.Body>
+              <div className="search">
+                <input
+                  type="text"
+                  value={saerchCity}
+                  placeholder="Enter city/town..."
+                  onChange={(e) => setsSaerchCity(e.target.value)}
+                />
+
+                <button onClick={fetchData}>Search</button>
+              </div>
+              {loading && <h1>Loading....</h1>}
+              {data ? (
+                <div>
+                  {/* <Card.Title>Result Of : {data.name}</Card.Title> */}
+                  <p className="card-subtitle city-name">
+                    <span className="city-name">Results for : </span>
+                    {data.name} {data.sys.country}
+                  </p>
+                  <p>
+                    <span className="data">Temp :</span> {data.main.temp} °C
+                  </p>
+                  <p>
+                    <span className="data">Humidity :</span>{" "}
+                    {data.main.humidity} %
+                  </p>
+
+                  <p>
+                    <span className="data">Condtion :</span>{" "}
+                    {data.weather[0].description}
+                  </p>
+                </div>
+              ) : error ? (
+                <h3 style={{ color: "red" }}>
+                  There Is no City With This Name, Inter a Valid City Name
+                </h3>
+              ) : (
+                <p></p>
+              )}
+              {/* <Card.Text>
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </Card.Text> */}
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>

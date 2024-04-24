@@ -14,19 +14,13 @@ code {
     monospace;
 }
 
-.main {
+/* .main {
   text-align: center;
   margin-top: 5%;
   margin-bottom: 2%;
   font-weight: 600;
   font-size: large;
-}
-
-.data {
-  color: #91ace1;
-  font-weight: 600;
-  font-size: large;
-}
+} */
 
 .App {
   text-align: center;
@@ -46,4 +40,36 @@ code {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+.city-name {
+  font-weight: 700;
+  font-family: arial, sans-serif;
+  font-size: 24px;
+  line-height: 22px;
+  color: #a34343;
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+.app-tlite {
+  font-weight: 900;
+  font-family: arial, sans-serif;
+  font-size: 48px;
+  line-height: 22px;
+}
+
+.data {
+  color: #a34343;
+  font-weight: 600;
+  font-size: large;
+  margin-bottom: 1em;
+}
+
+.search {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-weight: 600;
+  font-size: medium;
 }
