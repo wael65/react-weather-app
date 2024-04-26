@@ -207,9 +207,26 @@ const Weather = () => {
                     {/* <div className="col-1"></div> */}
                   </div>
                 ) : error ? (
-                  <h3 style={{ color: "red" }}>
-                    There Is no City With This Name, Inter a Valid City Name
-                  </h3>
+                  <div class="row ">
+                    <div
+                      class="col-12 col-sm-12 text-center "
+                      style={{
+                        paddingTop: "1em",
+                      }}
+                    >
+                      <h3
+                        style={{
+                          color: "#d86647",
+                          textShadow: "1.5px 1.5px #0f0f0f",
+                          paddingTop: "0em",
+                          marginBottom: "0em",
+                          fontWeight: "600",
+                        }}
+                      >
+                        There Is No City With This Name, Inter a Valid City Name
+                      </h3>
+                    </div>
+                  </div>
                 ) : null}
               </Card.Body>
             </Card.ImgOverlay>
